@@ -12,7 +12,7 @@ import lombok.Setter;
 @Component  
 @NoArgsConstructor
 public class MenuDTO {
-    private Long userid;
+    private Long itemId;
     private String itemName;
     private double price;
     private VegorNonType category ;

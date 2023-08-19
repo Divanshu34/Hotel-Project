@@ -16,7 +16,7 @@ import com.backend.services.interfaces.IMenuService;
 
 @Service
 @Transactional
-public class MenuService implements IMenuService{
+public class MenuService{
 
     @Autowired
     private IMenuDAO menuDao;
@@ -25,12 +25,12 @@ public class MenuService implements IMenuService{
     private MenuConverter menuConverter;
 
     @Override
-    public MenuPOJO addMenu(MenuDTO menuDto) {
-        return menuDao.save(menuConverter.dtoToPojo(menuDto));
+    public MenuDTO addMenu(MenuDTO menuDTO) {
+        menuDao.save(menuConverter.dtoToPojo(menuDTO));
     }
 
-    @Override
-    public List<MenuDTO> allMenu() {
-        return menuConverter.pojoToDto(menuDao.findAll());
-    }
+//     @Override
+//     public List<MenuDTO> allMenu() {
+//         return menuConverter.pojoToDto(menuDao.findAll());
+//     }
 }
