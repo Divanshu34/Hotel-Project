@@ -41,6 +41,16 @@ public class IngredientPOJO {
     @ManyToMany(mappedBy = "ingredients", fetch = FetchType.LAZY)
     private Set<MenuPOJO> items = new HashSet<>();
 
+    public Boolean addIngredient(MenuPOJO menuPOJO){
+        menuPOJO.getIngredients().add(this);
+        return this.items.add(menuPOJO);
+    }
+
+    public Boolean removeIngredient(MenuPOJO menuPOJO){
+        menuPOJO.getIngredients().remove(this);
+        return this.items.remove(menuPOJO);
+    }
+
     @ManyToOne
     @JoinColumn(name = "supplier_id")
     private SupplierPOJO ingredientBySupplier;  

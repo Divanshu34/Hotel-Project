@@ -36,5 +36,16 @@ public class CategoryPOJO {
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<MenuPOJO> items = new HashSet<>();
 
+    public Boolean addItem(MenuPOJO menuPOJO){
+        menuPOJO.setCategory(this);
+        return this.items.add(menuPOJO);
+    }
+
+    public Boolean removeItem(MenuPOJO menuPOJO){
+        menuPOJO.setCategory(null);
+        return this.items.remove(menuPOJO);
+    }
+
+
     
 }

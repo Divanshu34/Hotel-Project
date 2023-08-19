@@ -39,5 +39,5 @@ public class SupplierAddressPOJO {
 
     @ManyToOne
     @JoinColumn(name = "supplier_id")
-    private SupplierPOJO supplierAddress;
+    private SupplierPOJO supplier;
 }

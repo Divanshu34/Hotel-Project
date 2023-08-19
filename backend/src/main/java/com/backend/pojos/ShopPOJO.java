@@ -34,4 +34,14 @@ public class ShopPOJO {
     @OneToMany(mappedBy = "shopType", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SupplierPOJO> suppliers = new ArrayList<>();
 
+    public Boolean addSupplier(SupplierPOJO supplierPOJO){
+        supplierPOJO.setShopType(this);
+        return this.suppliers.add(supplierPOJO);
+    }
+
+    public Boolean removeSupplier(SupplierPOJO supplierPOJO){
+        supplierPOJO.setShopType(null);
+        return this.suppliers.remove(supplierPOJO);
+    }
+
 }

@@ -42,7 +42,27 @@ public class SupplierPOJO {
     @OneToMany(mappedBy = "ingredientBySupplier", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<IngredientPOJO> ingredients = new ArrayList<>();
 
+    public Boolean addIngredient(IngredientPOJO ingredientPOJO){
+        ingredientPOJO.setIngredientBySupplier(this);
+        return this.ingredients.add(ingredientPOJO);
+    }
+
+    public Boolean removeIngredient(IngredientPOJO ingredientPOJO){
+        ingredientPOJO.setIngredientBySupplier(null);
+        return this.ingredients.remove(ingredientPOJO);
+    }
+    
     @OneToMany(mappedBy = "supplierAddress", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SupplierAddressPOJO> supplierAddresses = new ArrayList<>();
+
+    public Boolean addSupplierAddress(SupplierAddressPOJO supplierAddressPOJO){
+        supplierAddressPOJO.setSupplier(this);
+        return this.supplierAddresses.add(supplierAddressPOJO);
+    }
+
+    public Boolean removeSupplierAddress(SupplierAddressPOJO supplierAddressPOJO){
+        supplierAddressPOJO.setSupplier(null);
+        return this.supplierAddresses.remove(supplierAddressPOJO);
+    }
 
 }

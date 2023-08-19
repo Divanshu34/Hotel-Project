@@ -3,6 +3,8 @@ package com.backend.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,8 +23,8 @@ public class AddressController {
     private IAddressService addressService;
 
     @PostMapping("/{userId}")
-    public AddressDTO addAddress(@RequestBody AddressDTO address, @PathVariable Long userId){
-        return addressService.addAddress(address, userId);
+    public ResponseEntity<?> addAddress(@RequestBody AddressDTO address, @PathVariable Long userId){
+        return ResponseEntity.status(HttpStatus.OK).body(addressService.addAddress(address, userId));
     }
 
 }

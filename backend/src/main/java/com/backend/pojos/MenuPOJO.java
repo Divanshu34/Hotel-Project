@@ -55,6 +55,16 @@ public class MenuPOJO {
     @ManyToMany( fetch = FetchType.LAZY)
     @JoinTable(name = "item_ingredient", joinColumns = @JoinColumn(name = "item_id"), inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
     private Set<IngredientPOJO> ingredients = new HashSet<>();
+    
+    public Boolean addIngredient(IngredientPOJO ingredientPOJO){
+        ingredientPOJO.getItems().add(this);
+        return this.ingredients.add(ingredientPOJO);
+    }
+
+    public Boolean removeIngredient(IngredientPOJO ingredientPOJO){
+        ingredientPOJO.getItems().remove(this);
+        return this.ingredients.remove(ingredientPOJO);
+    }
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "item_order", joinColumns = @JoinColumn(name = "item_id"), inverseJoinColumns = @JoinColumn(name = "order_id"))
