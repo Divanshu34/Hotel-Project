@@ -47,4 +47,14 @@ public class OrderPOJO {
 
     @ManyToMany(mappedBy = "orders", fetch = FetchType.LAZY)
     private Set<MenuPOJO> items = new HashSet<>();
+
+    public Boolean addItem(MenuPOJO menuPOJO){
+        menuPOJO.getOrders().add(this);
+        return this.items.add(menuPOJO);
+    }
+
+    public Boolean removeItem(MenuPOJO menuPOJO){
+        menuPOJO.getOrders().remove(this);
+        return this.items.remove(menuPOJO);
+    }
 }

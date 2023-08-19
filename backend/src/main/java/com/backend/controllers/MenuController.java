@@ -20,17 +20,17 @@ import com.backend.services.MenuService;
 @RequestMapping("/menu_controller")
 public class MenuController {
 
-    @Autowired
-    private MenuService menuService;
+    // @Autowired
+    // private MenuService menuService;
 
-    @PostMapping("/add-menu")
-    public MenuPOJO addMenu(@RequestBody MenuDTO menu){
-        return menuService.addMenu(menu);
-    }
+    // @PostMapping("/add-menu")
+    // public MenuPOJO addMenu(@RequestBody MenuDTO menu){
+        // return menuService.addMenu(menu);
+    // }
 
-    @GetMapping("/allmenu")
-    public List<MenuDTO> AllMenu(){
-    return menuService.allMenu();
-    }
+    // @GetMapping("/allmenu")
+    // public List<MenuDTO> AllMenu(){
+    // return menuService.allMenu();
+    // }
 
 }

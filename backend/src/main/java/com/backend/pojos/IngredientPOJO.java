@@ -43,6 +43,6 @@ public class IngredientPOJO {
 
     @ManyToOne
     @JoinColumn(name = "supplier_id")
-    private SupplierPOJO supplier;  
+    private SupplierPOJO ingredientBySupplier;  
 
 }

@@ -26,16 +26,14 @@ public class AddressService implements IAddressService {
     private IAddressConverter addressConverter;
 
     @Override
-    public AddressPOJO addAddress(AddressDTO address, Long userId) {
+    public AddressDTO addAddress(AddressDTO address, Long userId) {
         UserPOJO user = userDAO.findById(userId).get();
         AddressPOJO persistedAddress = addressConverter.dtoToPojo(address);
         if (persistedAddress.addUser(user)) {
             persistedAddress = addressDao.save(persistedAddress);
 
         }
-        // if(null != persistedAddress){
-        // }
-        return persistedAddress;
+        return addressConverter.pojoToDto(persistedAddress);
     }
 
 }

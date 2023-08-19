@@ -17,7 +17,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "supplier")
+@Table(name = "supplier_address")
 public class SupplierAddressPOJO {
 
     @Id
@@ -39,5 +39,5 @@ public class SupplierAddressPOJO {
 
     @ManyToOne
     @JoinColumn(name = "supplier_id")
-    private SupplierPOJO supplier;
+    private SupplierPOJO supplierAddress;
 }

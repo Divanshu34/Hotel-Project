@@ -39,10 +39,10 @@ public class SupplierPOJO {
     @JoinColumn(name = "shop_type")
     private ShopPOJO shopType;
 
-    @OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "ingredientBySupplier", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<IngredientPOJO> ingredients = new ArrayList<>();
 
-    @OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "supplierAddress", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<SupplierAddressPOJO> supplierAddresses = new ArrayList<>();
 
 }

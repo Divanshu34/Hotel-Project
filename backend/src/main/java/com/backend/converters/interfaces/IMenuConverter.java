@@ -6,9 +6,8 @@ import com.backend.dtos.MenuDTO;
 import com.backend.pojos.MenuPOJO;
 
 public interface IMenuConverter {
-    
+
     public MenuPOJO dtoToPojo(MenuDTO menuDto);
-   
 
     public List<MenuPOJO> dtoToPojo(List<MenuDTO> menuDto);
 

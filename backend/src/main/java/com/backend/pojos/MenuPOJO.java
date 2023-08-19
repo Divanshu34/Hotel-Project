@@ -60,6 +60,16 @@ public class MenuPOJO {
     @JoinTable(name = "item_order", joinColumns = @JoinColumn(name = "item_id"), inverseJoinColumns = @JoinColumn(name = "order_id"))
     private Set<OrderPOJO> orders = new HashSet<>();
 
+    public Boolean addOrder(OrderPOJO orderPOJO){
+        orderPOJO.getItems().add(this);
+        return this.orders.add(orderPOJO);
+    }
+
+    public Boolean removeOrder(OrderPOJO orderPOJO){
+        orderPOJO.getItems().remove(this);
+        return this.orders.remove(orderPOJO);
+    }
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private CategoryPOJO category;

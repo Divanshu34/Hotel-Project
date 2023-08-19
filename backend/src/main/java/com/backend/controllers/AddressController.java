@@ -21,7 +21,7 @@ public class AddressController {
     private IAddressService addressService;
 
     @PostMapping("/{userId}")
-    public AddressPOJO addAddress(@RequestBody AddressDTO address, @PathVariable Long userId){
+    public AddressDTO addAddress(@RequestBody AddressDTO address, @PathVariable Long userId){
         return addressService.addAddress(address, userId);
     }
 
