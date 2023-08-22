@@ -14,12 +14,8 @@ import com.backend.services.interfaces.IShopService;
 @RestController
 @RequestMapping("/shop")
 public class ShopController {
-    private IShopService shopService;
-
     @Autowired
-    public ShopController(IShopService shopService) {
-        this.shopService = shopService;
-    }
+    private IShopService shopService;
 
     @PostMapping("/add-shop-type")
     public ResponseEntity<?> addShop(@RequestBody ShopDTO shopDTO) {

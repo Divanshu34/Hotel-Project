@@ -13,15 +13,10 @@ import com.backend.services.interfaces.ICategoryService;
 @Transactional
 public class CategoryService implements ICategoryService{
 
-    private ICategoryDAO categoryDAO;
-    private ICategoryConverter categoryConverter;
-
-    
     @Autowired
-    public CategoryService(ICategoryDAO categoryDAO, ICategoryConverter categoryConverter) {
-        this.categoryDAO = categoryDAO;
-        this.categoryConverter = categoryConverter;
-    }
+    private ICategoryDAO categoryDAO;
+    @Autowired
+    private ICategoryConverter categoryConverter;
 
     @Override
     public CategoryDTO addCategory(CategoryDTO categoryDTO) {

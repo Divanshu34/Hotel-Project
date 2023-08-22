@@ -1,5 +1,6 @@
 package com.backend.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import com.backend.services.interfaces.ISupplierAddressService;
 @RestController
 @RequestMapping("supplier-address")
 public class SupplierAddressController {
+    @Autowired
     private ISupplierAddressService supplierAddressService;
 
     @PostMapping("/{supplerId}")

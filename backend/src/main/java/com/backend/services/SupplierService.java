@@ -16,16 +16,12 @@ import com.backend.services.interfaces.ISupplierService;
 @Transactional
 public class SupplierService implements ISupplierService {
 
-    private ISupplierDAO supplierDAO;
-    private ISupplierConverter supplierConverter;
-    private IShopDAO shopDAO;
-
     @Autowired
-    public SupplierService(ISupplierDAO supplierDAO, ISupplierConverter supplierConverter, IShopDAO shopDAO) {
-        this.supplierDAO = supplierDAO;
-        this.supplierConverter = supplierConverter;
-        this.shopDAO = shopDAO;
-    }
+    private ISupplierDAO supplierDAO;
+    @Autowired
+    private ISupplierConverter supplierConverter;
+    @Autowired
+    private IShopDAO shopDAO;
 
     @Override
     public SupplierDTO addSupplier(SupplierDTO supplierDTO, Long shopId) {

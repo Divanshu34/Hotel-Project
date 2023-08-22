@@ -12,12 +12,8 @@ import com.backend.services.interfaces.ICategoryService;
 @RestController
 @RequestMapping("category")
 public class CategoryController {
-    private ICategoryService categoryService;
-
     @Autowired
-    public CategoryController(ICategoryService categoryService) {
-        this.categoryService = categoryService;
-    }
+    private ICategoryService categoryService;
 
     @PostMapping("/add-category")
     public CategoryDTO addCategory(@RequestBody CategoryDTO categoryDTO){

@@ -6,11 +6,13 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.backend.converters.interfaces.ISupplierAddressConverter;
 import com.backend.dtos.SupplierAddressDTO;
 import com.backend.pojos.SupplierAddressPOJO;
 
+@Component
 public class SupplierAddressConverter implements ISupplierAddressConverter{
 
     @Autowired

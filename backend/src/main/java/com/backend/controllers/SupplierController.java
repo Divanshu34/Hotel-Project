@@ -15,12 +15,8 @@ import com.backend.services.interfaces.ISupplierService;
 @RestController
 @RequestMapping("/supplier")
 public class SupplierController {
-    private ISupplierService supplierService;
-
     @Autowired
-    public SupplierController(ISupplierService supplierService) {
-        this.supplierService = supplierService;
-    }
+    private ISupplierService supplierService;
 
     @PostMapping("/{shopId}")
     public ResponseEntity<?> addSupplier(@RequestBody SupplierDTO supplierDTO, @PathVariable Long shopId){

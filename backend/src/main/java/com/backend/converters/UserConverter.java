@@ -3,12 +3,9 @@ package com.backend.converters;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.backend.converters.interfaces.IUserConverter;
-import com.backend.daos.IAddressDao;
-import com.backend.daos.IUserDAO;
 import com.backend.dtos.UserDTO;
 
 import com.backend.pojos.UserPOJO;
@@ -16,11 +13,6 @@ import com.backend.pojos.UserPOJO;
 @Component
 public class UserConverter implements IUserConverter{
 
-    @Autowired
-    private IUserDAO userDAO;
-
-    @Autowired
-    private IAddressDao addressDAO;
 
     @Override
     public UserPOJO dtoToPojo(UserDTO userDTO) {

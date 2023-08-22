@@ -13,14 +13,10 @@ import com.backend.services.interfaces.IShopService;
 @Transactional
 public class ShopService implements IShopService {
 
-    private IShopDAO shopDAO;
-    private IShopConverter shopConverter;
-
     @Autowired
-    public ShopService(IShopDAO shopDAO, IShopConverter shopConverter) {
-        this.shopDAO = shopDAO;
-        this.shopConverter = shopConverter;
-    }
+    private IShopDAO shopDAO;
+    @Autowired
+    private IShopConverter shopConverter;
 
     @Override
     public ShopDTO addShop(ShopDTO shopDTO) {

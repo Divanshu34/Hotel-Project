@@ -16,17 +16,12 @@ import com.backend.services.interfaces.ISupplierAddressService;
 @Transactional
 public class SupplierAddressService implements ISupplierAddressService {
 
-    private ISupplierAddressDAO supplierAddressDAO;
-    private ISupplierDAO supplierDAO;
-    private ISupplierAddressConverter supplierAddressConverter;
-
     @Autowired
-    public SupplierAddressService(ISupplierAddressDAO supplierAddressDAO, ISupplierDAO supplierDAO,
-            ISupplierAddressConverter supplierAddressConverter) {
-        this.supplierAddressDAO = supplierAddressDAO;
-        this.supplierDAO = supplierDAO;
-        this.supplierAddressConverter = supplierAddressConverter;
-    }
+    private ISupplierAddressDAO supplierAddressDAO;
+    @Autowired
+    private ISupplierDAO supplierDAO;
+    @Autowired
+    private ISupplierAddressConverter supplierAddressConverter;
 
     @Override
     public SupplierAddressDTO addSupplierAddress(SupplierAddressDTO supplierAddressDTO, Long supplierId) {

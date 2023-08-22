@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Component
-public class TableTypePriceDTO {
+public class TableDTO {
    
     private TableType tableType;
     private Double price;

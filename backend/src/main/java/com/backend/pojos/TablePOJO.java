@@ -25,8 +25,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "table_type_price")
-public class TableTypePricePOJO {
+@Table(name = "tables")
+public class TablePOJO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,24 +46,8 @@ public class TableTypePricePOJO {
     @Column(name = "total_tables")
     private Long totalTables;
 
-    @Column(name = "available_tables")
-    private Long availableTables;
-
-    @OneToMany(mappedBy = "reservedTableType", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<TableReservationPOJO> bookedTables =new ArrayList<>();
-
-    // @OneToMany(mappedBy = "tableType", cascade = CascadeType.ALL, orphanRemoval = true)
-    // private List<DiningTablePOJO> tables = new ArrayList<>();
-
-    public void addTableReservation(TableReservationPOJO tableReservationPOJO) {
-        bookedTables.add(tableReservationPOJO);// parent --> child link
-        tableReservationPOJO.setReservedTableType(this);// child --> parent
-    }
-
-    public void removeTableReservation(TableReservationPOJO tableReservationPOJO) {
-        bookedTables.remove(tableReservationPOJO);// parent --> child link
-        tableReservationPOJO.setReservedTableType(null);// child ---X---> parent
-    }
+    @OneToMany(mappedBy = "tableReference", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<LiveTablePOJO> liveTablePOJOs = new ArrayList<>();
 
 
 }

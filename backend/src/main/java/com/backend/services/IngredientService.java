@@ -16,17 +16,12 @@ import com.backend.services.interfaces.IIngredientService;
 @Transactional
 public class IngredientService implements IIngredientService {
 
-    private IIngredientDAO ingredientDAO;
-    private ISupplierDAO supplierDAO;
-    private IIngredientConverter ingredientConverter;
-
     @Autowired
-    public IngredientService(IIngredientDAO ingredientDAO, ISupplierDAO supplierDAO,
-            IIngredientConverter ingredientConverter) {
-        this.ingredientDAO = ingredientDAO;
-        this.supplierDAO = supplierDAO;
-        this.ingredientConverter = ingredientConverter;
-    }
+    private IIngredientDAO ingredientDAO;
+    @Autowired
+    private ISupplierDAO supplierDAO;
+    @Autowired
+    private IIngredientConverter ingredientConverter;
 
     @Override
     public IngredientDTO addIngredient(IngredientDTO ingredientDTO, Long supplierId) {

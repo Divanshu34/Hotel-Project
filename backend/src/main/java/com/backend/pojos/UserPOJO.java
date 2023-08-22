@@ -85,18 +85,19 @@ public class UserPOJO {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TableReservationPOJO> reservedTables = new ArrayList<>();
 
+    public void addTableReservation(TableReservationPOJO liveTableReservationPOJO) {
+        reservedTables.add(liveTableReservationPOJO);
+        liveTableReservationPOJO.setUser(this);
+    }
+
+    public void removeTableReservation(TableReservationPOJO liveTableReservationPOJO) {
+        reservedTables.remove(liveTableReservationPOJO);
+        liveTableReservationPOJO.setUser(null);
+    }
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<OrderPOJO> orders = new HashSet<>();
 
-    public void addTableReservation(TableReservationPOJO tableReservationPOJO) {
-        reservedTables.add(tableReservationPOJO);
-        tableReservationPOJO.setUser(this);
-    }
-
-    public void removeTableReservation(TableReservationPOJO tableReservationPOJO) {
-        reservedTables.remove(tableReservationPOJO);
-        tableReservationPOJO.setUser(null);
-    }
 
     private String toStr() {
         return "UserPOJO [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", role=" + role

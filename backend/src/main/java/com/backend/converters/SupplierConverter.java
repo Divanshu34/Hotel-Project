@@ -5,21 +5,17 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import com.backend.converters.interfaces.IShopConverter;
 import com.backend.converters.interfaces.ISupplierConverter;
 import com.backend.dtos.SupplierDTO;
-import com.backend.pojos.ShopPOJO;
 import com.backend.pojos.SupplierPOJO;
 
-public class SupplierConverter implements ISupplierConverter{
-
-private ModelMapper modelMapper;
+@Component
+public class SupplierConverter implements ISupplierConverter {
 
     @Autowired
-    public SupplierConverter(ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
-    }
+    private ModelMapper modelMapper;
 
     @Override
     public SupplierPOJO dtoToPojo(SupplierDTO supplierDTO) {
@@ -40,5 +36,5 @@ private ModelMapper modelMapper;
     public List<SupplierDTO> pojoToDto(List<SupplierPOJO> supplierPOJOs) {
         return supplierPOJOs.stream().map(x -> pojoToDto(x)).collect(Collectors.toList());
     }
-    
+
 }

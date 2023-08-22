@@ -8,5 +8,5 @@ import com.backend.dtos.MenuDTO;
 
 public interface IMenuService {
 
-    public MenuDTO addItem(MenuDTO menuDTO, Set<Long> ingredientIds);
+    public MenuDTO addItem(MenuDTO menuDTO, Set<Long> ingredientIds, Long categoryId);
 }
