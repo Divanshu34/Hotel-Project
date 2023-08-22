@@ -11,18 +11,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.backend.dtos.LoginDTO;
 import com.backend.dtos.UserDTO;
 import com.backend.pojos.UserPOJO;
 import com.backend.services.interfaces.IUserService;
 
 @RestController
 @RequestMapping("/users")
-// @CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
     @Autowired
     private IUserService userService;
 
-    @PostMapping
+    @PostMapping("/addUser")
     public UserPOJO addUser(@RequestBody UserDTO user){
         return userService.addUser(user);
     }
@@ -35,5 +36,10 @@ public class UserController {
     @GetMapping("/{userId}")
     public UserDTO userById(@PathVariable Long userId){
         return userService.userById(userId);
+    }
+
+    @PostMapping("/login")
+    public UserDTO userByEmailAndPassword(@RequestBody LoginDTO loginDTO){
+        return userService.userByEmailAndPassword(loginDTO);
     }
 }

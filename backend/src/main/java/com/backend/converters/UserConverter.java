@@ -17,14 +17,14 @@ public class UserConverter implements IUserConverter{
     @Override
     public UserPOJO dtoToPojo(UserDTO userDTO) {
         UserPOJO userPOJO = new UserPOJO();
-        userPOJO.setUserId(userDTO.getUserId());
+        // userPOJO.setUserId(userDTO.getUserId());
         userPOJO.setFirstName(userDTO.getFirstName());
         userPOJO.setLastName(userDTO.getLastName());
         userPOJO.setUserEmail(userDTO.getUserEmail());
-        userPOJO.setRole(userDTO.getRole());
+        // userPOJO.setRole(userDTO.getRole());
         userPOJO.setMobileNumber(userDTO.getMobileNumber());
         userPOJO.setPassword(userDTO.getPassword());
-        userPOJO.setUserImage(userDTO.getUserImage());
+        // userPOJO.setUserImage(userDTO.getUserImage());
         return userPOJO;
     }
 
@@ -36,14 +36,14 @@ public class UserConverter implements IUserConverter{
     @Override
     public UserDTO pojoToDto(UserPOJO userPOJO) {
         UserDTO userDTO =  new UserDTO();
-        userDTO.setUserId(userPOJO.getUserId());
+        // userDTO.setUserId(userPOJO.getUserId());
         userDTO.setFirstName(userPOJO.getFirstName());
         userDTO.setLastName(userPOJO.getLastName());
         userDTO.setUserEmail(userPOJO.getUserEmail());
-        userDTO.setRole(userPOJO.getRole());
+        // userDTO.setRole(userPOJO.getRole());
         userDTO.setMobileNumber(userPOJO.getMobileNumber());
         userDTO.setPassword(userPOJO.getPassword());
-        userDTO.setUserImage(userPOJO.getUserImage());
+        // userDTO.setUserImage(userPOJO.getUserImage());
         
         return userDTO;
     }

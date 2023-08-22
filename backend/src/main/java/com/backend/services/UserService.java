@@ -9,13 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.backend.converters.interfaces.IUserConverter;
 import com.backend.daos.IAddressDao;
 import com.backend.daos.IUserDAO;
+import com.backend.dtos.LoginDTO;
 import com.backend.dtos.UserDTO;
 import com.backend.pojos.UserPOJO;
 import com.backend.services.interfaces.IUserService;
 
 @Service
 @Transactional
-public class UserService implements IUserService{
+public class UserService implements IUserService {
 
     @Autowired
     private IUserDAO userDAO;
@@ -31,14 +32,16 @@ public class UserService implements IUserService{
         // StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
 
         // if(stackTrace.length >= 3){
-        //     StackTraceElement caller = stackTrace[2];
-        //     StackTraceElement currMethod = stackTrace[1];
-        //     System.out.println("in "+getClass() + ", "+currMethod.getMethodName());System.out.println("Called from "+ caller.getClassName() + ", "+caller.getMethodName());
+        // StackTraceElement caller = stackTrace[2];
+        // StackTraceElement currMethod = stackTrace[1];
+        // System.out.println("in "+getClass() + ",
+        // "+currMethod.getMethodName());System.out.println("Called from "+
+        // caller.getClassName() + ", "+caller.getMethodName());
         // }
-        
+
         UserPOJO persistedUser = userConverter.dtoToPojo(user);
         persistedUser = userDAO.save(persistedUser);
-        
+
         return persistedUser;
     }
 
@@ -46,11 +49,22 @@ public class UserService implements IUserService{
     public List<UserDTO> allUsers() {
         return userConverter.pojoToDto(userDAO.findAll());
     }
-    
+
     @Override
-    public UserDTO userById(Long userId){
+    public UserDTO userById(Long userId) {
         return userConverter.pojoToDto(userDAO.findById(userId).orElse(null));
     }
 
-    
+    @Override
+    public UserDTO userByEmailAndPassword(LoginDTO loginDTO) {
+        System.out.println(loginDTO.getPassword() + loginDTO.getUserEmail());
+        UserPOJO userPOJO = userDAO.findByUserEmailAndPassword(loginDTO.getUserEmail(), loginDTO.getPassword());
+        if (null != userPOJO) {
+            
+            return userConverter.pojoToDto(userPOJO);
+        } else {
+            return null;
+        }
+    }
+
 }

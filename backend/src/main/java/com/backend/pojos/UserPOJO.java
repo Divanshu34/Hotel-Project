@@ -20,6 +20,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import com.backend.pojos.enums.UserRole;
 
@@ -49,10 +50,10 @@ public class UserPOJO {
     @Enumerated(EnumType.STRING)
     private UserRole role;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     private String userEmail;
 
-    @Column(name = "mob_no")
+    @Column(name = "mob_no", unique = true)
     private String mobileNumber;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
