@@ -15,7 +15,7 @@ public class UserDTO {
     // private Long userId;
     private String firstName;
     private String lastName;
-    private UserRole role = UserRole.CUSTOMER;
+    private String role;
     private String userEmail;
     private String mobileNumber;
     private String password;

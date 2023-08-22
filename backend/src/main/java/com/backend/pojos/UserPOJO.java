@@ -47,8 +47,7 @@ public class UserPOJO {
     private String lastName;
 
     @Column(name = "role")
-    @Enumerated(EnumType.STRING)
-    private UserRole role;
+    private String role;
 
     @Column(name = "email", unique = true)
     private String userEmail;

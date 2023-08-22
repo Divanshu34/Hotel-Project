@@ -12,6 +12,7 @@ import com.backend.daos.IUserDAO;
 import com.backend.dtos.LoginDTO;
 import com.backend.dtos.UserDTO;
 import com.backend.pojos.UserPOJO;
+import com.backend.pojos.enums.UserRole;
 import com.backend.services.interfaces.IUserService;
 
 @Service
@@ -39,6 +40,9 @@ public class UserService implements IUserService {
         // caller.getClassName() + ", "+caller.getMethodName());
         // }
 
+        if (user.getRole() == null) {
+            user.setRole("CUSTOMER");
+        }
         UserPOJO persistedUser = userConverter.dtoToPojo(user);
         persistedUser = userDAO.save(persistedUser);
 
@@ -60,7 +64,7 @@ public class UserService implements IUserService {
         System.out.println(loginDTO.getPassword() + loginDTO.getUserEmail());
         UserPOJO userPOJO = userDAO.findByUserEmailAndPassword(loginDTO.getUserEmail(), loginDTO.getPassword());
         if (null != userPOJO) {
-            
+
             return userConverter.pojoToDto(userPOJO);
         } else {
             return null;

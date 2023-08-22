@@ -21,7 +21,7 @@ public class UserConverter implements IUserConverter{
         userPOJO.setFirstName(userDTO.getFirstName());
         userPOJO.setLastName(userDTO.getLastName());
         userPOJO.setUserEmail(userDTO.getUserEmail());
-        // userPOJO.setRole(userDTO.getRole());
+        userPOJO.setRole(userDTO.getRole());
         userPOJO.setMobileNumber(userDTO.getMobileNumber());
         userPOJO.setPassword(userDTO.getPassword());
         // userPOJO.setUserImage(userDTO.getUserImage());
@@ -40,7 +40,7 @@ public class UserConverter implements IUserConverter{
         userDTO.setFirstName(userPOJO.getFirstName());
         userDTO.setLastName(userPOJO.getLastName());
         userDTO.setUserEmail(userPOJO.getUserEmail());
-        // userDTO.setRole(userPOJO.getRole());
+        userDTO.setRole(userPOJO.getRole());
         userDTO.setMobileNumber(userPOJO.getMobileNumber());
         userDTO.setPassword(userPOJO.getPassword());
         // userDTO.setUserImage(userPOJO.getUserImage());
