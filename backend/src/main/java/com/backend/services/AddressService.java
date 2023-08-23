@@ -29,10 +29,10 @@ public class AddressService implements IAddressService {
     public AddressDTO addAddress(AddressDTO address, Long userId) {
         UserPOJO user = userDAO.findById(userId).get();
         AddressPOJO persistedAddress = addressConverter.dtoToPojo(address);
-        if (persistedAddress.addUser(user)) {
-            persistedAddress = addressDao.save(persistedAddress);
+        persistedAddress.setUserPOJO(user);
 
-        }
+        persistedAddress = addressDao.save(persistedAddress);
+
         return addressConverter.pojoToDto(persistedAddress);
     }
 

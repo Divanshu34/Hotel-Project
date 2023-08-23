@@ -9,16 +9,20 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 @Entity
 @Table(name = "address")
 public class AddressPOJO {
@@ -40,29 +44,10 @@ public class AddressPOJO {
     @Column(name = "pincode")
     private String pincode;
 
-    @ManyToMany(mappedBy = "addresses", fetch = FetchType.LAZY)
-    // @JsonBackReference
-    private Set<UserPOJO> users = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserPOJO userPOJO;
 
-    public Boolean addUser(UserPOJO userPOJO){
-        userPOJO.getAddresses().add(this);
-        return this.users.add(userPOJO);
-    }
-
-    public Boolean removeUser(UserPOJO userPOJO){
-        userPOJO.getAddresses().remove(this);
-        return this.users.remove(userPOJO);
-    }
-
-    @Override
-    public String toString(){
-        return toStr();
-    }
-
-    private String toStr() {
-        return "AddressPOJO [addressId=" + addressId + ", addressLine=" + addressLine + ", landmark=" + landmark
-                + ", city=" + city + ", pincode=" + pincode + ", users=" + users + "]";
-    }
 
     
 

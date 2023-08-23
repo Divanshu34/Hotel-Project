@@ -1,13 +1,16 @@
 package com.backend.pojos;
 
-import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -33,7 +36,16 @@ public class TableReservationPOJO {
     @JoinColumn(name = "user_id")
     private UserPOJO user;
 
-    @ManyToOne
-    @JoinColumn(name = "live_table_id")
-    private LiveTablePOJO liveTablePOJO;
+    @ManyToMany(mappedBy = "tableReservationPOJOs", fetch = FetchType.LAZY)
+    private Set<LiveTablePOJO> liveTablePOJOs = new HashSet<>();
+
+    public Boolean addTables (LiveTablePOJO liveTablePOJO){
+        liveTablePOJO.getTableReservationPOJOs().add(this);
+        return this.liveTablePOJOs.add(liveTablePOJO);
+    }
+
+    public Boolean removeTables (LiveTablePOJO liveTablePOJO){
+        liveTablePOJO.getTableReservationPOJOs().remove(this);
+        return this.liveTablePOJOs.remove(liveTablePOJO);
+    }
 }

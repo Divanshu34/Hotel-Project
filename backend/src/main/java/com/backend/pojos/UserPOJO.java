@@ -55,18 +55,16 @@ public class UserPOJO {
     @Column(name = "mob_no", unique = true)
     private String mobileNumber;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "users_address", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "address_id"))
-    // @JsonManagedReference
+    @OneToMany(mappedBy = "userPOJO", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<AddressPOJO> addresses = new HashSet<AddressPOJO>();
 
     public Boolean addAddress(AddressPOJO addressPOJO) {
-        addressPOJO.getUsers().add(this);
+        addressPOJO.setUserPOJO(this);
         return this.addresses.add(addressPOJO);
     }
 
     public Boolean removeAddress(AddressPOJO addressPOJO) {
-        addressPOJO.getUsers().remove(this);
+        addressPOJO.setUserPOJO(null);
         return this.addresses.remove(addressPOJO);
     }
 
