@@ -36,8 +36,8 @@ public class MenuPOJO {
     @Column(name = "item_id")
     private Long itemId;
 
-    @Column(name = "user_id")
-    private Long userid;
+    // @Column(name = "user_id")
+    // private Long userid;
 
     @Column(name = "item_name")
     private String itemName;
